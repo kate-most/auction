@@ -1,0 +1,25 @@
+.nav {
+
+}
+
+/*Элемент блока nav*/
+.nav__list {
+  list-style: none;
+  margin: 0; /* Normalize не обнуляет */
+  padding: 0; /* Normalize не обнуляет */
+  font-size: 0; /*чтоб не было отступа по-умолчанию у инлайновых детей*/
+}
+
+/*Элемент блока nav, ребенок элемента nav__list. Без nav__list существовать не может*/
+.nav__list-item {
+  display: inline-block;
+  font-size: 16px; /*Восстанавливаем font-size, обнуленный родителем*/
+  transition: all .5s ease; /*Для плавного изменения шрифта и марджина при изменении разрешения*/
+}
+
+/*Элемент блока nav, ребенок list и item. Без nav__list-item существовать не может*/
+.nav__list-item-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 4px 10px; /*Т.к. при ховере появляется рамка*/
+}
