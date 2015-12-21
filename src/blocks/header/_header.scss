@@ -1,17 +1,13 @@
 .header {
-  font-size: 0; /*убирает отступы по умолчанию (пробелы) у инлайновых элементов*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%; /*Поскольку position: fixed занимает ширину своего контента*/
   z-index: 1; /*Чтоб лежащий за ним релатив, что занимает весь экран, его не перекрывал*/
-  background: #bbb;
-}
-
-.header__side {
-  display: inline-block; /*Для вертикального выравнивания*/
-  width: 33.3333%; /*Поскольку инлайновые занимают ширину контента, а нам необходимо контент из одного из блоков сместить в право*/
-  vertical-align: middle; /*Выровняли два контейнера относительно друг-дружки*/
+  background: #464547;
 }
 
 .header__side.header__side_right {

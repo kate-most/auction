@@ -13,7 +13,9 @@
 /*Элемент блока nav, ребенок элемента nav__list. Без nav__list существовать не может*/
 .nav__list-item {
   display: inline-block;
-  font-size: 16px; /*Восстанавливаем font-size, обнуленный родителем*/
+  font-size: 18px; /*Восстанавливаем font-size, обнуленный родителем*/
+  text-transform: uppercase;
+  font-weight: bold;
   transition: all .5s ease; /*Для плавного изменения шрифта и марджина при изменении разрешения*/
 }
 
