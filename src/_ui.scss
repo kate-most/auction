@@ -1,29 +1,41 @@
 .ui-btn {
-
-  &:hover {
-    background: $red-color;
-  }
-
-  border: 0;
-  background: $blue-color;
-  color: #fff;
+  border: 2px solid $blue-color;
   padding: 5px 10px;
+  outline: none;
+  background: none;
+  color: $dark-grey-color;
 }
 
 .ui-btn.ui-btn_accent {
+
+  &:hover {
+    background: $red-color;
+    border-color: $red-color;
+  }
+
+  background: $blue-color;
+  color: #fff;
+}
+
+.ui-btn.ui-btn_bet {
   text-transform: uppercase;
   margin-right: 5px;
+}
+
+.ui-btn.ui-btn_light {
+
+  &:hover {
+    border-color: $blue-color;
+  }
+
+  border-color: $light-grey-color;
+  padding: 3px 5px;
+  border-width: 1px;
 }
 
 .ui-label {
   color: $blue-color;
   font-weight: bold;
-  border: 1px solid $blue-color;
+  border: 2px solid $blue-color;
   padding: 5px;
-}
-
-.ui-btn.ui-btn__sort {
-  border: 1px solid $blue-color;
-  background: none;
-  color: $dark-grey-color;
 }

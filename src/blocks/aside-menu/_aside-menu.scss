@@ -1,0 +1,42 @@
+.aside-menu {
+  margin-top: 20px;
+  position: fixed;
+  background: #fff;
+  color: $dark-grey-color;
+  border-top: 2px solid $blue-color;
+  border-right: 2px solid $blue-color;
+  border-bottom: 2px solid $blue-color;
+  padding: 15px;
+}
+
+.aside-menu__title {
+  margin: 0 0 10px;
+  color: $blue-color;
+  font-weight: normal;
+  display: inline-block;
+}
+
+.aside-menu__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aside-menu__list-item {
+  line-height: 1.5em;
+}
+
+.aside-menu__list-item-link {
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  text-decoration: none;
+  color: $dark-grey-color;
+}
+
+.aside-menu .ui-btn {
+  text-align: right;
+  float: right;
+}

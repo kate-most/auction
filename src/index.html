@@ -7,7 +7,13 @@
 <body>
 {% include "./blocks/header/header.html" %}
 {% include "./blocks/promo/promo.html" %}
-{% include "./blocks/main/main.html" %}
+<div class="main">
+  <h2 class="main__title">Buy at auction</h2>
+  {% include "./blocks/aside-menu/aside-menu.html" %}
+
+  {% include "./blocks/control-panel/control-panel.html" %}
+
+</div>
 {% include "./includes.html" %}
 </body>
 </html>

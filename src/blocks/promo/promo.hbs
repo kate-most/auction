@@ -2,24 +2,8 @@
 {{#each items}}
     <!--Проверка условия, если hot правдивый то делаем следующее-->
     {{#hot}}
-      <div class="lot">
-        <div class="lot__title">
-          <a href="{{link}}" class="lot__title-link">{{title}}</a>
-        </div>
-
-        <div class="lot__img">
-          <a href="{{link}}" class="lot__img-link"><img src="{{image}}"></a>
-          <div class="lot__label ui-label">HOT</div>
-        </div>
-
-        <div class="lot__details">
-          <div class="lot__details-price">Current price: {{currency}}{{price}}</div>
-          <button class="ui-btn ui-btn_accent">Bet</button>
-          <button class="ui-btn">Details</button>
-        </div>
-
-        <div class="lot__social"></div>
-      </div>
+        <!--Partial Вставляем разметку лота-->
+      {{>lot}}
     {{/hot}}
 <!--Закрытие цикла-->
 {{/each}}

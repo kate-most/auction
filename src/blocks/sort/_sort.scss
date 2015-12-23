@@ -1,16 +1,6 @@
 .sort {
-  display: inline-block;
   text-align: right;
-  float: right;
   font-size: 0;
-}
-
-.sort__title {
-  text-align: center;
-  color: $blue-color;
-  font-size: 16px;
-  margin-bottom: 10px;
-  font-weight: bold;
 }
 
 .sort input {
@@ -23,5 +13,6 @@
 
 .sort input:checked + .sort__item {
   background: $blue-color;
+  border-color: $blue-color;
   color: #fff;
 }

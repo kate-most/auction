@@ -22,13 +22,6 @@ gulp.task('compress', function() {
       .pipe(gulp.dest('./build'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch('./src/**/*.scss', ['sass']);
-  gulp.watch('./src/**/*.js', ['compress']);
-  gulp.watch('./src/**/*.hbs', ['templates']);
-  gulp.watch('./src/**/*.html', ['swig']);
-});
-
 gulp.task('templates', function(){
   gulp.src('./src/**/*.hbs')
       .pipe(handlebars())
@@ -47,4 +40,29 @@ gulp.task('swig', function() {
       .pipe(gulp.dest('build/'));
 });
 
-gulp.task('default', ['sass', 'compress', 'templates', 'swig', 'watch']);
+gulp.task('partials', function() {
+  // Assume all partials start with an underscore
+  // You could also put them in a folder such as source/templates/partials/*.hbs
+  gulp.src(['./src/blocks/lot/_lot.hbs'])
+      .pipe(handlebars())
+      .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
+        imports: {
+          processPartialName: function(fileName) {
+            // Strip the extension and the underscore
+            // Escape the output with JSON.stringify
+            return JSON.stringify(path.basename(fileName, '.js').substr(1));
+          }
+        }
+      }))
+      .pipe(concat('partials.js'))
+      .pipe(gulp.dest('build/js/'));
+});
+
+gulp.task('watch', function () {
+  gulp.watch('./src/**/*.scss', ['sass']);
+  gulp.watch('./src/**/*.js', ['compress']);
+  gulp.watch('./src/**/*.hbs', ['partials', 'templates']);
+  gulp.watch('./src/**/*.html', ['swig']);
+});
+
+gulp.task('default', ['sass', 'compress', 'templates', 'swig', 'partials', 'watch']);
