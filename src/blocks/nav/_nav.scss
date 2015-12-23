@@ -2,26 +2,65 @@
 
 }
 
-/*Элемент блока nav*/
 .nav__list {
   list-style: none;
   margin: 0; /* Normalize не обнуляет */
   padding: 0; /* Normalize не обнуляет */
-  font-size: 0; /*чтоб не было отступа по-умолчанию у инлайновых детей*/
+  font-size: 0;
 }
 
-/*Элемент блока nav, ребенок элемента nav__list. Без nav__list существовать не может*/
 .nav__list-item {
+
+  &:hover .nav__list_sub {
+    display: block;
+  }
+
+  &:hover .nav__list-item-link {
+  background: $blue-color;
+}
+
   display: inline-block;
-  font-size: 18px; /*Восстанавливаем font-size, обнуленный родителем*/
+  font-size: 18px;
   text-transform: uppercase;
   font-weight: bold;
-  transition: all .5s ease; /*Для плавного изменения шрифта и марджина при изменении разрешения*/
+  position: relative;
 }
 
-/*Элемент блока nav, ребенок list и item. Без nav__list-item существовать не может*/
+.nav__list-item:last-child .nav__list-item-link {
+  border: none;
+}
+
 .nav__list-item-link {
+
   color: #fff;
   text-decoration: none;
-  padding: 4px 10px; /*Т.к. при ховере появляется рамка*/
+  padding: 4px 10px;
+  border-right: 2px solid $blue-color;
+}
+
+.nav__list.nav__list_sub {
+  position: absolute;
+  display: none;
+  z-index: 999;
+  background: $blue-color;
+  width: 100%;
+}
+
+.nav__list-item.nav__list-item_sub {
+  display: block;
+  font-size: 16px;
+  font-weight: normal;
+  text-transform: lowercase;
+}
+
+.nav__list-item-link.nav__list-item-link_sub {
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  float: left;
+  height: 2em;
+  line-height: 2em;
+  padding: 0 1.5em;
 }

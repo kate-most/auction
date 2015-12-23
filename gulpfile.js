@@ -34,7 +34,7 @@ gulp.task('templates', function(){
       .pipe(handlebars())
       .pipe(wrap('Handlebars.template(<%= contents %>)'))
       .pipe(declare({
-        namespace: 'MyApp.templates',
+        namespace: 'Auction.templates',
         noRedeclare: true, // Avoid duplicate declarations
       }))
       .pipe(concat('templates.js'))

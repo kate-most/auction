@@ -4,9 +4,6 @@
   border: 0;
 }
 
-.search__submit {
-  padding: 5px;
-  border: 0;
-  background: #4688D3;
-  color: #fff;
+::-webkit-input-placeholder, :-moz-placeholder, ::-moz-placeholder, :-ms-input-placeholder {
+  color: #9A9999;
 }

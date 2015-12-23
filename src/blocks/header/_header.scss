@@ -7,7 +7,7 @@
   left: 0;
   width: 100%; /*Поскольку position: fixed занимает ширину своего контента*/
   z-index: 1; /*Чтоб лежащий за ним релатив, что занимает весь экран, его не перекрывал*/
-  background: #464547;
+  background: $dark-grey-color;
 }
 
 .header__side.header__side_right {

@@ -1,0 +1,27 @@
+.sort {
+  display: inline-block;
+  text-align: right;
+  float: right;
+  font-size: 0;
+}
+
+.sort__title {
+  text-align: center;
+  color: $blue-color;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.sort input {
+  display: none;
+}
+
+.sort__item {
+  font-size: 16px;
+}
+
+.sort input:checked + .sort__item {
+  background: $blue-color;
+  color: #fff;
+}

@@ -1,0 +1,49 @@
+.lot {
+
+  &:hover .lot__title-link {
+  color: $blue-color;
+}
+
+  &:hover .lot__label {
+    color: $red-color;
+    border-color: $red-color;
+  }
+
+  float: left;
+  padding: 10px 10px 20px;
+  text-align: left;
+}
+
+.lot__title {
+  font-size: 20px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.lot__title-link {
+  text-decoration: none;
+  color: $dark-grey-color;
+}
+
+.lot__details-price {
+  font-size: 16px;
+  color: $light-grey-color;
+  text-align: left;
+  margin-bottom: 5px;
+}
+
+.lot__img {
+  position: relative;
+  margin: 5px 0;
+}
+
+.lot__label {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.promo .lot__label {
+  display: block;
+}
