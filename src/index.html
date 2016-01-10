@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
+<body>
+{% include "./blocks/header/header.html" %}
+{% include "./blocks/promo/promo.html" %}
+
+<div class="main">
+  {% include "./blocks/lot-list/lot-list.html" %}
+</div>
+
+{% include "./blocks/pdp/pdp.html" %}
+
+{% include "./includes.html" %}
+</body>
 <head lang="en">
   <meta charset="UTF-8">
   <title></title>
 </head>
-<body>
-{% include "./blocks/header/header.html" %}
-{% include "./blocks/promo/promo.html" %}
-<div class="main">
-  <h2 class="main__title">Buy at auction</h2>
-  {% include "./blocks/aside-menu/aside-menu.html" %}
-
-  {% include "./blocks/control-panel/control-panel.html" %}
-
-</div>
-{% include "./includes.html" %}
-</body>
 </html>

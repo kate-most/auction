@@ -1,0 +1,30 @@
+.bid-details {
+}
+
+.bid-details__counter {
+  color: #fff;
+  background: $blue-color;
+  line-height: 1.5em;
+}
+
+.bid-details__counter-time {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bid-details__console {
+  background: $super-light-grey-color;
+}
+
+.bbid-details__console__current-bid {
+  margin-bottom: 2px;
+}
+
+.id-details__console__current-bid-amount {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bid-details__console__next-bid {
+  font-size: 13px;
+}

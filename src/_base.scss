@@ -1,7 +1,16 @@
 $blue-color: #4688D3;
 $dark-grey-color: #464547;
 $light-grey-color: #9A9999;
+$super-light-grey-color: #EAE7E7;
 $red-color: #D30A10;
+
+$susy: (
+  columns: 15,
+  gutters: 1/4,
+  math: fluid,
+  output: float,
+  gutter-position: inside,
+);
 
 html {
   box-sizing: border-box;
@@ -23,6 +32,14 @@ img {
   transition: all .5s ease;
 }
 
+h1 {
+  font-size: 40px;
+  text-transform: uppercase;
+  color: $blue-color;
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
 h2 {
   font-size: 30px;
   font-weight: bold;
@@ -39,18 +56,18 @@ h2 {
 }
 
 ::-webkit-input-placeholder {
-  color: $light-grey-color;
+  color: $dark-grey-color;
 }
 
 :-moz-placeholder { /* Firefox 18- */
-  color: $light-grey-color;
+  color: $dark-grey-color;
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-  color: $light-grey-color;
+  color: $dark-grey-color;
 }
 
 :-ms-input-placeholder {
-  color: $light-grey-color;
+  color: $dark-grey-color;
 }
 

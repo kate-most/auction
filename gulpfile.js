@@ -1,11 +1,13 @@
 'use strict';
 
+var path = require('path');
 var gulp = require('gulp');
 var sass = require('gulp-sass');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 var handlebars = require('gulp-handlebars');
 var wrap = require('gulp-wrap');
+var merge = require('merge-stream');
 var declare = require('gulp-declare');
 var swig = require('gulp-swig');
 
@@ -40,11 +42,13 @@ gulp.task('swig', function() {
       .pipe(gulp.dest('build/'));
 });
 
-gulp.task('partials', function() {
+gulp.task('templates', function() {
   // Assume all partials start with an underscore
   // You could also put them in a folder such as source/templates/partials/*.hbs
-  gulp.src(['./src/blocks/lot/_lot.hbs'])
-      .pipe(handlebars())
+  var partials = gulp.src(['src/**/_*.hbs'])
+      .pipe(handlebars({
+        handlebars: require('handlebars')
+      }))
       .pipe(wrap('Handlebars.registerPartial(<%= processPartialName(file.relative) %>, Handlebars.template(<%= contents %>));', {}, {
         imports: {
           processPartialName: function(fileName) {
@@ -53,16 +57,29 @@ gulp.task('partials', function() {
             return JSON.stringify(path.basename(fileName, '.js').substr(1));
           }
         }
+      }));
+
+  var templates = gulp.src('src/**/[^_]*.hbs')
+      .pipe(handlebars({
+        handlebars: require('handlebars')
       }))
-      .pipe(concat('partials.js'))
-      .pipe(gulp.dest('build/js/'));
+      .pipe(wrap('Handlebars.template(<%= contents %>)'))
+      .pipe(declare({
+        namespace: 'Auction.templates',
+        noRedeclare: true // Avoid duplicate declarations
+      }));
+
+  // Output both the partials and the templates as build/js/templates.js
+  return merge(partials, templates)
+      .pipe(concat('templates.js'))
+      .pipe(gulp.dest('build/'));
 });
 
 gulp.task('watch', function () {
   gulp.watch('./src/**/*.scss', ['sass']);
   gulp.watch('./src/**/*.js', ['compress']);
-  gulp.watch('./src/**/*.hbs', ['partials', 'templates']);
+  gulp.watch('./src/**/*.hbs', ['templates']);
   gulp.watch('./src/**/*.html', ['swig']);
 });
 
-gulp.task('default', ['sass', 'compress', 'templates', 'swig', 'partials', 'watch']);
+gulp.task('default', ['sass', 'compress', 'templates', 'swig', 'watch']);

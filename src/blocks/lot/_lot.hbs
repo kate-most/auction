@@ -5,14 +5,15 @@
 
   <div class="lot__img">
     <a href="{{link}}" class="lot__img-link"><img src="{{image}}"></a>
-    <div class="lot__label ui-label">HOT</div>
+      {{#hot}}
+        <div class="lot__label ui-label">HOT</div>
+      {{/hot}}
   </div>
 
   <div class="lot__details">
-    <div class="lot__details-price">Current price: {{currency}}{{price}}</div>
+    <div class="lot__details-price">Current bid: {{currency}}{{price}}</div>
     <button class="ui-btn ui-btn_accent ui-btn_bet">Bet</button>
     <button class="ui-btn ui-btn_accent">Details</button>
+    <div class="lot__social"></div>
   </div>
-
-  <div class="lot__social"></div>
 </div>

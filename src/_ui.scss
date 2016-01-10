@@ -23,11 +23,6 @@
 }
 
 .ui-btn.ui-btn_light {
-
-  &:hover {
-    border-color: $blue-color;
-  }
-
   border-color: $light-grey-color;
   padding: 3px 5px;
   border-width: 1px;

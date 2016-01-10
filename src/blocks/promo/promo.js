@@ -10,7 +10,8 @@ Auction.classes.Promo = function(element) { // element - контекст кла
   var $root = $(element); //создали jquery объект. $() - функция, что на основе ствоего параметра создает jquery объект
   this.elements = {
     $root: $root, // чтоб отовсюду иметь доступ к объекту $root
-    $wrapper: $root.find('.promo__content') // на объекте применяем метод find, который ищет в контексте текущего объекта $root, у нас это promo блок, элемент с переданным селектором и возвращает jquery объект
+    $wrapper: $root.find('.promo__content'), // на объекте применяем метод find, который ищет в контексте текущего объекта $root, у нас это promo блок, элемент с переданным селектором и возвращает jquery объект
+    $window: $(window)
   };
 
   this.init();
@@ -31,6 +32,7 @@ Auction.classes.Promo.prototype.getLots = function() { // получаем json 
     method: 'GET', // Указание на то, что получаем данные
     success: function(data) { // data - ответ с сервера, в нашем случае это объект с нашими данными с json файла
       _this.render(data); // this - объект, который возвращает ajax, поэтому вызываем метод на переменной, что хранит ссылку на нужный контекст
+      _this.elements.$window.trigger('getLots', data);
     }
   });
 };

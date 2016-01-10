@@ -1,9 +1,16 @@
 {
   "items": [
-    {"title": "The most hot lot #1", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#"},
-    {"title": "The most hot lot #2", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#"},
-    {"title": "The most hot lot #3", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#"},
-    {"title": "The most hot lot #4", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#"},
-    {"title": "The most hot lot #5", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#"}
+    {"title": "The most hot lot #1", "price": 200, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "red", "date": 1452253441769},
+    {"title": "The most hot lot #2", "price": 50, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "white", "date": 1452253441761},
+    {"title": "The most hot lot #3", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "black", "date": 1452253441759},
+    {"title": "The most hot lot #4", "price": 70, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "red", "date": 1452253441765},
+    {"title": "The most hot lot #5", "price": 300, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "white", "date": 1452253441762},
+    {"title": "The most hot lot #6", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "betLink": "#", "color": "black", "date": 1452253441763},
+    {"title": "The most hot lot #7", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "red", "date": 1452253441751},
+    {"title": "The most hot lot #8", "price": 200, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "white", "date": 1452253441747},
+    {"title": "The most hot lot #9", "price": 300, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "black", "date": 1452253441766},
+    {"title": "The most hot lot #10", "price": 200, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "red", "date": 1452253441767},
+    {"title": "The most hot lot #11", "price": 100, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "hot": true, "betLink": "#", "color": "white", "date": 1452253441768},
+    {"title": "The most hot lot #12", "price": 250, "currency": "USD", "image": "/auction/src/img/item-3.jpg", "link": "#", "betLink": "#", "color": "black", "date": 1452253441769}
   ]
 }

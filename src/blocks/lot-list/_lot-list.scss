@@ -1,0 +1,8 @@
+.lot-list {
+  @include susy-clearfix();
+}
+
+.lot-list__title {
+  padding-top: 101px;
+  margin-top: -101px;
+}

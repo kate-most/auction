@@ -1,0 +1,9 @@
+{{#paginate pagination type="previous"}}
+    <li class="pagination__item{{#if disabled}} pagination__item_disabled{{/if}}"><a data-page="{{n}}" href="#p={{n}}" class="pagination__item-link">Prev</a></li>
+{{/paginate}}
+{{#paginate pagination type="middle" limit="7"}}
+    <li class="pagination__item{{#if active}} pagination__item_active{{/if}}"><a data-page="{{n}}" href="#p={{n}}" class="pagination__item-link">{{n}}</a></li>
+{{/paginate}}
+{{#paginate pagination type="next"}}
+    <li class="pagination__item{{#if disabled}} pagination__item_disabled{{/if}}"><a data-page="{{n}}" href="#p={{n}}" class="pagination__item-link">Next</a></li>
+{{/paginate}}

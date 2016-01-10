@@ -1,5 +1,9 @@
 .lot {
 
+  .lot-list & {
+    @include span(3 of 15);
+  }
+
   &:hover .lot__title-link {
   color: $blue-color;
 }
@@ -40,12 +44,8 @@
 }
 
 .lot__label {
-  display: none;
   position: absolute;
   top: 10px;
   left: 10px;
 }
 
-.promo .lot__label {
-  display: block;
-}

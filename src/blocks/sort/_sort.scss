@@ -12,7 +12,6 @@
 }
 
 .sort input:checked + .sort__item {
-  background: $blue-color;
-  border-color: $blue-color;
+  background: $light-grey-color;
   color: #fff;
 }

@@ -1,0 +1,7 @@
+{{#each filters}}
+    <select name="{{name}}" class="filters__select">
+      {{#each values}}
+          <option {{#active}}selected{{/active}} value="{{value}}">{{title}}</option>
+      {{/each}}
+    </select>
+{{/each}}

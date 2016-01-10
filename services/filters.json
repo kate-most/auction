@@ -1,0 +1,6 @@
+{
+  "filters": [
+    {"name": "color", "type": "select", "values": [{"title": "Choose color", "value": ""},{"title": "red", "value": "red"}, {"title": "white", "value": "white"}, {"title": "black", "value": "black"}]},
+    {"name": "price", "type": "select", "values": [{"title": "Choose price", "value": ""},{"title": "0-100", "value": "0-100"}, {"title": "101-200", "value": "101-200"}, {"title": "201-300", "value": "201-300"}]}
+  ]
+}
