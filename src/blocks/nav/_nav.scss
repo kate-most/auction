@@ -32,6 +32,9 @@
 
 .nav__list-item-link {
 
+  &.nav__list-item-link_active {
+    background: $blue-color;
+  }
   color: #fff;
   text-decoration: none;
   padding: 4px 10px;

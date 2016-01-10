@@ -21,8 +21,6 @@ Auction.classes.Sort.prototype.init = function() { // первичная нас�
 
   //получаем jquery obj выбранной сортировки (input) и добавляем ему в дом своство checked
   $('#' + sort).prop('checked', true);
-
-
 };
 
 Auction.classes.Sort.prototype.attachEvents = function() {
@@ -39,8 +37,6 @@ Auction.classes.Sort.prototype.handleChange = function(event) { // метод-о
 
   //пушим в хэш значение элемента с ключем сорт
   $.bbq.pushState({sort: value});
-
-
 };
 
 (function() { // функция обертка для скрытия переменных, использующихся для создания объектов

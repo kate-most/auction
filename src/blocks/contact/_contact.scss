@@ -1,0 +1,30 @@
+.contact__title {
+  padding-top: 101px;
+  margin-top: -101px;
+}
+
+.contact__item {
+  color: $dark-grey-color;
+  font-size: 18px;
+}
+
+.contact__item.contact__item_accent {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.contact__item-link {
+
+  &:hover {
+    color: $blue-color;
+  }
+
+  text-decoration: none;
+  color: $dark-grey-color;
+  font-size: 16px;
+}
+
+.contact__map {
+  height: 500px;
+  margin-top: 20px;
+}

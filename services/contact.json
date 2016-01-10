@@ -1,0 +1,14 @@
+{
+  "phone": "+380993333333",
+  "email": "auction@auction.com",
+  "address": "Kyiv, Solomyanska str. 5",
+  "map": {
+    "center": {
+      "lat": -34.397, "lng": 150.644
+    },
+    "zoom": 8,
+    "marker": {
+      "lat": -34.397, "lng": 150.644
+    }
+  }
+}

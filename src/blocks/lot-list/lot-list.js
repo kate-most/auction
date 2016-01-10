@@ -52,16 +52,22 @@ Auction.classes.LotList.prototype.getCurrentLots = function() {
   //отфильтровует data и возвращает массив из объектов, которые попадают под указанные критерии
   data.items = this.data.items.filter(function(lot) {
 
-    if(state.color && state.price) {
+    if(state.color && state.price && state.category) {
+      prices = getPrices(state.price);
+      return (state.color === lot.color && lot.price >= prices.minPrice && lot.price <= prices.maxPrice && state.category === lot.category)
+    } else if(state.color && state.price) {
       prices = getPrices(state.price);
       return (state.color === lot.color && lot.price >= prices.minPrice && lot.price <= prices.maxPrice)
-    }
-
-    else if(state.color) {
+    } else if(state.price && state.category) {
+      prices = getPrices(state.price);
+      return (lot.price >= prices.minPrice && lot.price <= prices.maxPrice && state.category === lot.category)
+    } else if(state.color && state.category) {
+      return (state.color === lot.color && state.category === lot.category)
+    } else if(state.color) {
       return (state.color === lot.color)
-    }
-
-    else if(state.price) {
+    } else if(state.category) {
+      return (state.category === lot.category)
+    }else if(state.price) {
       prices = getPrices(state.price);
       return (lot.price >= prices.minPrice && lot.price <= prices.maxPrice);
     }
@@ -98,7 +104,7 @@ Auction.classes.LotList.prototype.attachEvents = function() { // первичн�
   });
 
   //следим за событием смены хэша
-  this.elements.$window.on('hashchange', function(event) {
+  this.elements.$window.on('hashchange', function() {
 
     //вызываем метод рендер с новой отфильтрованной датой, которую возвращает метод геткарентлотс
     _this.render(_this.getCurrentLots());
