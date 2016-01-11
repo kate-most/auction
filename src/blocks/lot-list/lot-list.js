@@ -25,8 +25,19 @@ Auction.classes.LotList.prototype.init = function() { // первичная на
 
 };
 
+//вспомагательный метод для того, чтобы разделить цену в хэшэ на два значения
+Auction.classes.LotList.prototype.getPrices = function() {
+  var prices = price.split('-');
+  var minPrice = parseInt(prices[0], 10);
+  var maxPrice = parseInt(prices[1], 10);
+
+  return {minPrice: minPrice, maxPrice: maxPrice};
+};
+
 //метод для получения объекта с отфильтрованными данными
 Auction.classes.LotList.prototype.getCurrentLots = function() {
+
+  var _this = this;
   //будет хранить отфильтрованный объект
   var data = {};
 
@@ -40,26 +51,17 @@ Auction.classes.LotList.prototype.getCurrentLots = function() {
   //будет хранить объект с минимальной и максимальной ценой в фильтре
   var prices;
 
-  //вспомагательным метод для того, чтобы разделить цену в хэшэ на два значения
-  function getPrices(price) {
-    var prices = price.split('-');
-    var minPrice = parseInt(prices[0], 10);
-    var maxPrice = parseInt(prices[1], 10);
-
-    return {minPrice: minPrice, maxPrice: maxPrice};
-  }
-
   //отфильтровует data и возвращает массив из объектов, которые попадают под указанные критерии
   data.items = this.data.items.filter(function(lot) {
 
     if(state.color && state.price && state.category) {
-      prices = getPrices(state.price);
+      prices = _this.getPrices(state.price); //поскольку в callback this станет this.data.items
       return (state.color === lot.color && lot.price >= prices.minPrice && lot.price <= prices.maxPrice && state.category === lot.category)
     } else if(state.color && state.price) {
-      prices = getPrices(state.price);
+      prices = _this.getPrices(state.price);
       return (state.color === lot.color && lot.price >= prices.minPrice && lot.price <= prices.maxPrice)
     } else if(state.price && state.category) {
-      prices = getPrices(state.price);
+      prices = _this.getPrices(state.price);
       return (lot.price >= prices.minPrice && lot.price <= prices.maxPrice && state.category === lot.category)
     } else if(state.color && state.category) {
       return (state.color === lot.color && state.category === lot.category)
@@ -68,11 +70,9 @@ Auction.classes.LotList.prototype.getCurrentLots = function() {
     } else if(state.category) {
       return (state.category === lot.category)
     }else if(state.price) {
-      prices = getPrices(state.price);
+      prices = _this.getPrices(state.price);
       return (lot.price >= prices.minPrice && lot.price <= prices.maxPrice);
-    }
-
-    else {
+    } else {
       return true; // если в хэшэ нет колора и прайса, то возвращать тру и отображать все
     }
   });

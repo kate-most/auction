@@ -17,7 +17,7 @@ Auction.classes.Nav = function(element) {
 };
 
 Auction.classes.Nav.prototype.init = function() { // первичная настройка объекта и вызов вспомагательных методов
-  //получаем значение свойства нав в хэшэ
+  //получаем значение свойства nav в хэшэ
   var current = $.bbq.getState().nav;
   //создаем jquery obj на основе селектора и добавляем ему класс
   $('a[data-nav="' + current + '"]').addClass('nav__list-item-link_active');
@@ -32,13 +32,13 @@ Auction.classes.Nav.prototype.attachEvents = function() {
 
 Auction.classes.Nav.prototype.handleClick = function(event) {
 
-  //затираем поведение по умолчанию
+  //затираем поведение по умолчанию, чтоб не перезатирался хэш
   event.preventDefault();
 
-  //сохраняем как объект элемент, на котором вызвали событие, т.е. линк
+  //сохраняем, как jquery объект, элемент, на котором вызвали событие, т.е. линк
   var $current = $(event.target);
 
-  //смотрим значение его дата атрибута data-nav
+  //смотрим значение его data атрибута data-nav
   var nav = $current.data('nav');
 
   //пушим в хэш значение дата атрибута nav
@@ -53,13 +53,13 @@ Auction.classes.Nav.prototype.filterCategory = function(event) {
   //затираем поведение по умолчанию
   event.preventDefault();
 
-  //сохраняем как объект элемент, на котором вызвали событие, т.е. линк
+  //сохраняем как объект элемент, на котором вызвали событие, т.е. link
   var $current = $(event.target);
 
-  //смотрим значение его дата атрибута data-category
+  //смотрим значение его data атрибута data-category
   var category = $current.data('category');
 
-  //пушим в хэш значение дата атрибута nav
+  //пушим в хэш значение data атрибута nav, category
   $.bbq.pushState({category: category, nav: 'lot-list'});
 
   this.elements.$link.removeClass('nav__list-item-link_active');
