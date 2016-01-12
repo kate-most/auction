@@ -1,0 +1,28 @@
+.gallery {
+  @include susy-clearfix;
+  margin-top: 20px;
+}
+
+.gallery__item {
+  $layout: (
+    columns: 15,
+    gutters: 0,
+    math: fluid,
+    output: float,
+    gutter-position: inside,
+  );
+
+  @include with-layout($layout) {
+    @include span(3 of 15);
+  }
+
+  &:nth-of-type(6n + 6) {
+    clear: left;
+  }
+}
+
+.gallery__item-img {
+  display: block;
+  max-width: none;
+  width: 100%;
+}

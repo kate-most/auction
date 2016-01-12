@@ -2,6 +2,10 @@
 
   .lot-list & {
     @include span(3 of 15);
+
+    &:nth-of-type(6n + 6) {
+      clear: left;
+    }
   }
 
   &:hover .lot__title-link {

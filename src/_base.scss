@@ -49,10 +49,8 @@ h2 {
   margin-bottom: 0;
 }
 
-.clear:after {
-  content: '';
-  display: block;
-  clear: both;
+.main {
+  padding: 10px 20px;
 }
 
 ::-webkit-input-placeholder {

@@ -52,7 +52,7 @@ Auction.classes.Contact.prototype.getContact = function() {
 Auction.classes.Contact.prototype.initMap = function(data) {
 
   var map = new google.maps.Map(this.elements.$map.get(0), { //получаем элемент из jquery obj
-    center: data.map.center, //получаем объект-свойство оюъекта мап
+    center: data.map.center, //получаем объект-свойство оюъекта data.map
     scrollwheel: false,
     zoom: data.map.zoom
   });

@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <body>
+
 {% include "./blocks/header/header.html" %}
-{% include "./blocks/promo/promo.html" %}
 
 <div class="main">
+  {% include "./blocks/promo/promo.html" %}
   {% include "./blocks/lot-list/lot-list.html" %}
   {% include "./blocks/contact/contact.html" %}
+  {% include "./blocks/pdp/pdp.html" %}
 </div>
-
-{% include "./blocks/pdp/pdp.html" %}
 
 {% include "./includes.html" %}
 </body>

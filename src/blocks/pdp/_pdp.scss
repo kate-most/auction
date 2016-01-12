@@ -1,30 +1,24 @@
 .pdp__info {
   margin-top: 20px;
+  @include susy-clearfix;
 }
 
 .pdp__info-item {
+  $layout: (
+    columns: 15,
+    gutters: 0,
+    math: fluid,
+    output: float,
+    gutter-position: inside,
+  );
 
-  &:last-child {
-    padding-right: 0;
+  @include with-layout($layout) {
+    @include span(5 of 15);
   }
-
-  &:first-child {
-    padding-left: 0;
-  }
-
-  float: left;
-  padding: 0 15px;
-}
-
-.pdp__info-item.pdp__info-item_35 {
-  width: 35%;
-}
-
-.pdp__info-item.pdp__info-item_30 {
-  width: 30%;
 }
 
 .pdp__description {
   text-align: justify;
+  padding: 0 15px;
 }
 
