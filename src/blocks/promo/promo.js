@@ -26,13 +26,19 @@ Auction.classes.Promo.prototype.getLots = function() { // получаем json 
   var _this = this; //В переменную сохранили контекст, чтоб вызвать потом метод в нужном нам контексте
 
   $.ajax({ // матод для ассинхронного http запроса
-    url: '/auction/services/lots.json', //ссылка на нащ сервис
+    url: '/auction/services/lots.jsoan', //ссылка на нащ сервис
     dataType: 'json', // тип ожидаемых данных
     data: {}, // параметры запроса, с какими параметрами сервер увидит мой запрос и соответственно какие будет передавать. Пустой потому, что у нас нет сервиса, а есть статический json
     method: 'GET', // Указание на то, что получаем данные
     success: function(data) { // data - ответ с сервера, в нашем случае это объект с нашими данными с json файла
       _this.render(data); // this - объект, который возвращает ajax, поэтому вызываем метод на переменной, что хранит ссылку на нужный контекст
       _this.elements.$window.trigger('getLots', data);
+    },
+    error: function(jqXHR, textStatus, errorThrown) {
+      alert('Tried to get lots but there was an error ' + errorThrown);
+      _this.render(jqXHR, true);
+      jqXHR.isError = true;
+      _this.elements.$window.trigger('getLots', jqXHR);
     }
   });
 };
@@ -75,12 +81,19 @@ Auction.classes.Promo.prototype.carusel = function() {
   });
 };
 
-Auction.classes.Promo.prototype.render = function(data) { //отрисовывает html
-  var template = Auction.templates.promo(data); //получаем результат в виде строки
-  // Auction.templates.promo(data) - метод handlebars, который в качестве параметра получает объект data и возвращает строку
-  this.elements.$wrapper.html(template); //обращаемся к jquery объкту, созданному на основе элемента promo, вызываем на нем метод html, который подменяет текущий контент хтмлем из переданной строки.
+Auction.classes.Promo.prototype.render = function(data, isError) { //отрисовывает html
 
-  this.carusel();
+  var template;
+
+  if (isError) {
+    template = Auction.templates.error(data);
+    this.elements.$root.html(template);
+
+  } else {
+    template = Auction.templates.promo(data);
+    this.elements.$wrapper.html(template);
+    this.carusel();
+  }
 
 };
 

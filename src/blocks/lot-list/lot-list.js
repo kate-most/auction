@@ -100,7 +100,11 @@ Auction.classes.LotList.prototype.attachEvents = function() { // первичн�
     _this.data = data;
 
     //вызываем метод рендер с новой отфильтрованной датой, которую возвращает метод геткарентлотс
-    _this.render(_this.getCurrentLots());
+    if (data.isError) {
+      _this.render(data, true);
+    } else {
+      _this.render(_this.getCurrentLots());
+    }
   });
 
   //следим за событием смены хэша
@@ -115,10 +119,18 @@ Auction.classes.LotList.prototype.attachEvents = function() { // первичн�
 };
 
 
-Auction.classes.LotList.prototype.render = function(data) { //отрисовывает html
-  var template = Auction.templates['lot-list'](data); //получаем результат в виде строки
-  // Auction.templates.promo(data) - метод handlebars, который в качестве параметра получает объект data и возвращает строку
-  this.elements.$wrapper.html(template); //обращаемся к jquery объкту, созданному на основе элемента promo, вызываем на нем метод html, который подменяет текущий контент хтмлем из переданной строки.
+Auction.classes.LotList.prototype.render = function(data, isError) { //отрисовывает html
+
+  var template;
+
+  if (isError) {
+    template = Auction.templates.error(data);
+    this.elements.$root.html(template);
+
+  } else {
+    template = Auction.templates['lot-list'](data);
+    this.elements.$wrapper.html(template);
+  }
 };
 
 (function() { // функция обертка для скрытия переменных, использующихся для создания объектов

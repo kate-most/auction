@@ -30,6 +30,11 @@ Auction.classes.Pdp.prototype.attachEvents = function() {
 };
 
 Auction.classes.Pdp.prototype.handleGetLots = function(event, data) {
+
+  if (data.isError) {
+    return this.render(data, true);
+  }
+
   this.data = data;
 
   this.findData();
@@ -58,11 +63,12 @@ Auction.classes.Pdp.prototype.makeBid = function(event) {
   this.elements.$root.find('.bid-details__console__current-bid-value').text(event.target.elements.bid.value);
 };
 
-Auction.classes.Pdp.prototype.render = function(data) { //отрисовывает html
+Auction.classes.Pdp.prototype.render = function(data, isError) { //отрисовывает html
 
-  var template = Auction.templates.pdp(data);
+  var template = isError ? Auction.templates.error(data) : Auction.templates.pdp(data);
 
   this.elements.$root.html(template);
+
 };
 
 (function() { // функция обертка для скрытия переменных, использующихся для создания объектов
