@@ -1,17 +1,9 @@
-.filters {
-
-}
-
 .filters__select {
   border: 1px solid $light-grey-color;
   padding: 2px 5px;
   outline: none;
   color: $dark-grey-color;
   font-size: 16px;
-}
-
-@include susy-breakpoint(0 $bp-tablet) {
-
 }
 
 @include susy-breakpoint(0 $bp-phone) {

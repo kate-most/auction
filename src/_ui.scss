@@ -4,28 +4,27 @@
   outline: none;
   background: none;
   color: $dark-grey-color;
-}
 
-.ui-btn.ui-btn_accent {
+  &.ui-btn_accent {
+    &:hover {
+      background: $red-color;
+      border-color: $red-color;
+    }
 
-  &:hover {
-    background: $red-color;
-    border-color: $red-color;
+    background: $blue-color;
+    color: #fff;
   }
 
-  background: $blue-color;
-  color: #fff;
-}
+  &.ui-btn_bet {
+    text-transform: uppercase;
+    margin-right: 5px;
+  }
 
-.ui-btn.ui-btn_bet {
-  text-transform: uppercase;
-  margin-right: 5px;
-}
-
-.ui-btn.ui-btn_light {
-  border-color: $light-grey-color;
-  padding: 3px 5px;
-  border-width: 1px;
+  &.ui-btn_light {
+    border-color: $light-grey-color;
+    padding: 3px 5px;
+    border-width: 1px;
+  }
 }
 
 .ui-label {

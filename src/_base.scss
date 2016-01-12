@@ -3,27 +3,12 @@ $dark-grey-color: #464547;
 $light-grey-color: #9A9999;
 $super-light-grey-color: #EAE7E7;
 $red-color: #D30A10;
+$header-height: 101px;
 $bp-tablet: 960px;
 $bp-phone: 560px;
 
 $susy: (
   columns: 15,
-  gutters: 1/4,
-  math: fluid,
-  output: float,
-  gutter-position: inside,
-);
-
-$tablet: (
-  columns: 12,
-  gutters: 1/4,
-  math: fluid,
-  output: float,
-  gutter-position: inside,
-);
-
-$phone: (
-  columns: 6,
   gutters: 1/4,
   math: fluid,
   output: float,

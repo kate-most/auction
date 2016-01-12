@@ -1,23 +1,28 @@
 .lot {
-
-  .lot-list & {
-    @include span(3 of 15);
-  }
-
-  &:hover .lot__title-link {
-  color: $blue-color;
-}
-
-  &:hover .lot__label {
-    color: $red-color;
-    border-color: $red-color;
-  }
-
   float: left;
   padding: 10px 10px 20px;
   text-align: left;
   margin-bottom: 10px;
   outline: none;
+
+  .lot-list & {
+    @include span(3 of 15);
+
+    &:nth-of-type(5n + 6) {
+      @include break;
+    }
+  }
+
+  &:hover {
+    .lot__title-link {
+      color: $blue-color;
+    }
+
+    .lot__label {
+      color: $red-color;
+      border-color: $red-color;
+    }
+  }
 }
 
 .lot__title {
@@ -32,10 +37,10 @@
 }
 
 .lot__details-price {
+  margin-bottom: 5px;
   font-size: 16px;
   color: $light-grey-color;
   text-align: left;
-  margin-bottom: 5px;
 }
 
 .lot__img {
@@ -53,6 +58,14 @@
   .lot {
     .lot-list & {
       @include span(5 of 15);
+
+      &:nth-of-type(5n + 6) {
+        clear: none;
+      }
+
+      &:nth-of-type(3n + 4) {
+        @include break;
+      }
     }
   }
 }

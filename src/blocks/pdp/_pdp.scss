@@ -1,6 +1,6 @@
 .pdp__title {
-  padding-top: 101px;
-  margin-top: -101px;
+  padding-top: $header-height;
+  margin-top: -$header-height;
 }
 
 .pdp__info {
@@ -9,7 +9,7 @@
 }
 
 .pdp__info-item {
-  $layout: (
+  $pdp-layout: (
     columns: 15,
     gutters: 0,
     math: fluid,
@@ -17,7 +17,7 @@
     gutter-position: inside,
   );
 
-  @include with-layout($layout) {
+  @include with-layout($pdp-layout) {
     @include span(5 of 15);
   }
 }
@@ -33,7 +33,8 @@
     float: none;
   }
 
-  .pdp__image, .pdp__description{
+  .pdp__image,
+  .pdp__description {
     max-width: 600px;
     margin: 0 auto;
   }
@@ -42,5 +43,3 @@
     padding: 20px 0;
   }
 }
-
-

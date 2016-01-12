@@ -1,6 +1,6 @@
 .contact__title {
-  padding-top: 101px;
-  margin-top: -101px;
+  padding-top: $header-height;
+  margin-top: -$header-height;
 }
 
 .contact__item {
@@ -14,14 +14,13 @@
 }
 
 .contact__item-link {
+  text-decoration: none;
+  color: $dark-grey-color;
+  font-size: 16px;
 
   &:hover {
     color: $blue-color;
   }
-
-  text-decoration: none;
-  color: $dark-grey-color;
-  font-size: 16px;
 }
 
 .contact__map {

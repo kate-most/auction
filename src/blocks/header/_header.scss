@@ -1,12 +1,12 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%; /*Поскольку position: fixed занимает ширину своего контента*/
   z-index: 1; /*Чтоб лежащий за ним релатив, что занимает весь экран, его не перекрывал*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: $dark-grey-color;
 }
 
@@ -23,8 +23,4 @@
   .header__side.header__side_search {
     display: none;
   }
-}
-
-@include susy-breakpoint(0 $bp-phone) {
-
 }
