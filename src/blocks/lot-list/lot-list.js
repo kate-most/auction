@@ -44,10 +44,14 @@ Auction.classes.LotList.prototype.attachEvents = function() { //подписыв
 
   this.elements.$window.on('hashchange', function() {
 
-    _this.render(_this.getCurrentLots());
+    if (_this.data.isError) {
+      _this.render(_this.data, true);
+    } else {
+      _this.render(_this.getCurrentLots());
 
-    //скролим к заголовку блока каждый раз после перерисовки лотов
-    _this.elements.$window.scrollTop(_this.elements.$anchor.offset().top);
+      //скролим к заголовку блока каждый раз после перерисовки лотов
+      _this.elements.$window.scrollTop(_this.elements.$anchor.offset().top);
+    }
   });
 };
 

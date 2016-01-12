@@ -30,7 +30,7 @@ Auction.classes.Promo.prototype.getLots = function() { // получаем json 
 
   // метод для ассинхронного http запроса
   $.ajax({
-    url: '/auction/services/lots.json',
+    url: '/auction/services/lots.jsonp',
     dataType: 'json',
     data: {},
     method: 'GET',
@@ -40,11 +40,9 @@ Auction.classes.Promo.prototype.getLots = function() { // получаем json 
 
       _this.elements.$window.trigger('getLots', data);
     },
-    error: function(jqXHR, textStatus, errorThrown) {
-      alert('Tried to get lots but there was an error ' + errorThrown);
+    error: function(jqXHR) {
       _this.render(jqXHR, true);
-      jqXHR.isError = true;
-      _this.elements.$window.trigger('getLots', jqXHR);
+      _this.elements.$window.trigger('getLots', {isError: true, status: jqXHR.status, statusText: jqXHR.statusText});
     }
   });
 };

@@ -38,12 +38,16 @@ Auction.classes.Contact.prototype.getContact = function() {
 
     //если есть, получаем данные с сервера
     $.ajax({
-      url: '/auction/services/contact.json',
+      url: '/auction/services/contact.jsonp',
       dataType: 'json',
       data: {},
       method: 'GET',
       success: function(data) {
         _this.render(data);
+      },
+
+      error: function(jqXHR) {
+        _this.render(jqXHR, true);
       }
     })
   }
@@ -64,16 +68,23 @@ Auction.classes.Contact.prototype.initMap = function(data) { //отображе�
   });
 };
 
-Auction.classes.Contact.prototype.render = function(data) { //отрисовывает html
+Auction.classes.Contact.prototype.render = function(data, isError) { //отрисовывает html
 
-  var template = Auction.templates.contact(data);
-  this.elements.$wrapper.html(template);
+  var template;
 
-  //поскольку ранее map будет не отрендерин
-  this.elements.$map = this.elements.$root.find('.contact__map');
-  this.initMap(data);
+  if(isError) {
+    template = Auction.templates.error(data);
+    this.elements.$root.html(template);
+  } else {
+    template = Auction.templates.contact(data);
+    this.elements.$wrapper.html(template);
 
-  this.elements.$window.scrollTop(this.elements.$anchor.offset().top);
+    //поскольку ранее map будет не отрендерин
+    this.elements.$map = this.elements.$root.find('.contact__map');
+    this.initMap(data);
+
+    this.elements.$window.scrollTop(this.elements.$anchor.offset().top);
+  }
 };
 
 (function() {

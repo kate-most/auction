@@ -34,13 +34,8 @@ Auction.classes.Pdp.prototype.attachEvents = function() { //подписывае
 
 Auction.classes.Pdp.prototype.handleGetLots = function(event, data) {
 
-  if (data.isError) {
-    return this.render(data, true);
-  }
-
   //сохраняем data
   this.data = data;
-
   this.findData();
 };
 
@@ -48,14 +43,19 @@ Auction.classes.Pdp.prototype.findData = function() { //получить data к
 
   var state = $.bbq.getState();
 
-  if(state.nav === 'pdp') {
-    var id = parseInt(state.id, 10);
+  if (state.nav === 'pdp') {
 
-    for(var i = 0; i < this.data.items.length; i++) {
-      if(id === this.data.items[i].id) {
-        this.render(this.data.items[i]);
+    if (this.data.isError) {
+      this.render(this.data, true);
+    } else {
+      var id = parseInt(state.id, 10);
 
-        break;
+      for (var i = 0; i < this.data.items.length; i++) {
+        if (id === this.data.items[i].id) {
+          this.render(this.data.items[i]);
+
+          break;
+        }
       }
     }
   }
