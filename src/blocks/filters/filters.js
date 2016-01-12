@@ -1,11 +1,15 @@
 var Auction = Auction || {};
 
+// хранит массивы из объектов, созданных через new
 Auction.instances = Auction.instances || {};
 
+// хранит функции-конутрукторы
 Auction.classes = Auction.classes || {};
 
 Auction.classes.Filters = function(element) {
+
   var $root = $(element);
+
   this.elements = {
     $root: $root
   };
@@ -18,19 +22,23 @@ Auction.classes.Filters.prototype.init = function() { // первичная на
   this.getFilters();
 };
 
-Auction.classes.Filters.prototype.attachEvents = function() { //ловим событие чендж на элементах склассом и вызываем метод, меняющий хэш
+Auction.classes.Filters.prototype.attachEvents = function() { //ловит события
   this.elements.$root.on('change', '.filters__select', this.handleChange.bind(this));
 };
 
-Auction.classes.Filters.prototype.handleChange = function() { // метод, который изменяем хэш при всплытии события чендж
+Auction.classes.Filters.prototype.handleChange = function() { //изменяет хэш при всплытии события change на форме
+
+  //получаем сериализированную строку из элементов формы
   var data = this.elements.$root.serialize();
 
+  //сериализированную строку превращаем в объект
   data = $.deparam(data);
 
   $.bbq.pushState(data);
 };
 
-Auction.classes.Filters.prototype.getFilters = function() { //получает информацию с сервера и вызывает метод рендер
+Auction.classes.Filters.prototype.getFilters = function() { //получает информацию с сервиса и вызывает метод render
+
   var _this = this;
 
   $.ajax({
@@ -44,50 +52,48 @@ Auction.classes.Filters.prototype.getFilters = function() { //получает �
   });
 };
 
-Auction.classes.Filters.prototype.prepareData = function(data) { //метод для подготовки даты перед отображением
+Auction.classes.Filters.prototype.prepareData = function(data) { //метод для подготовки data перед отображением - добавление свойств active
 
-  //создаем клон объекта, чтоб не менять нативный
+  //создание клона объекта, чтоб не менять нативный
   var preparedData = $.extend({}, data);
 
-  //записываем в переменную объект хэша
   var state = $.bbq.getState();
 
-  // сравнивает значение свойств объекта хэша со значением
-
   //Пробегаемся по всем ключам объекта хэша
+  //Object.keys возвращает массив из имен ключей
   Object.keys(state).forEach(function(value) {
-    //пробегаемся по всем значениям объекта фильтры
+    //пробегаемся по всем элементам-объектам массива filters
     preparedData.filters.forEach(function(filter) {
-      //сравниваем, если имя фильтра равно ключу объекта хэша
+      //сравниваем, если значение поля name фильтра равно ключу объекта хэша
       if (filter.name === value) {
-        //пробегаемся по каждому свойству-объекту фильтра values
+        //пробегаемся по каждому свойству-объекту массива values фильтра
         filter.values.forEach(function(val) {
           //сравниваем, если значение values.value равно значению ключа объекта хэша
           if (val.value === state[value]) {
-           val.active = true; // добавляем свойство active в объект values, если значение поля селекта совпадает со значением в хэше
+            // добавляем свойство active в этот объект массива values, если значение опшина совпадает со значением в хэше
+           val.active = true;
           }
         });
       }
     });
   });
 
-  //клон дата, но с добавленными свойствами актив, если в хэше указаны значения свойств color или price
   return preparedData;
 };
 
 Auction.classes.Filters.prototype.render = function(data) { //отрисовывает html
 
-  var template = Auction.templates.filters(this.prepareData(data)); //получает клон data с добавленными свойствами active
+  var template = Auction.templates.filters(this.prepareData(data));
 
   this.elements.$root.html(template);
 };
 
-(function() { // функция обертка для скрытия переменных, использующихся для создания объектов
+(function() {
   var elements = document.getElementsByClassName('filters'); //получаем массив элементов с классом promo
   Auction.instances.filters = [];
 
-  for(var i = 0; i < elements.length; i++) { // перебираем массив elements
-    Auction.instances.filters.push(new Auction.classes.Filters(elements[i])); // для каждого элемента массива создаем объекты через конструктор Filters и пушим их в массив promos. В данной ситуации такой объект один - это блок promo c каруселью.
+  for(var i = 0; i < elements.length; i++) {
+    Auction.instances.filters.push(new Auction.classes.Filters(elements[i])); // для каждого элемента массива создаем объекты через конструктор
   }
 })();
 

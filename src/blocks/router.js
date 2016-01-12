@@ -1,7 +1,9 @@
 var Auction = Auction || {};
 
+// хранит массивы из объектов, созданных через new
 Auction.instances = Auction.instances || {};
 
+// хранит функции-конутрукторы
 Auction.classes = Auction.classes || {};
 
 Auction.classes.Router = function() {
@@ -15,20 +17,19 @@ Auction.classes.Router = function() {
 };
 
 Auction.classes.Router.prototype.init = function() { // первичная настройка объекта и вызов вспомагательных методов
+
   this.route();
 };
 
-//подписываемся на событие смены хеша
-Auction.classes.Router.prototype.attachEvents = function() {
+Auction.classes.Router.prototype.attachEvents = function() { //подписываемся на событие смены хеша
+
   this.elements.$window.on('hashchange', this.route.bind(this));
 };
 
-//
 Auction.classes.Router.prototype.route = function() {
-  //получаем значение свойства нав из хэша
+
   var nav = $.bbq.getState().nav || 'lot-list';
 
-  //скрываем все блоки и отображаем только с нужным классом
   $('.block').hide();
   $('.' + nav).show();
 };

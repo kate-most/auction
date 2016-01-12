@@ -1,7 +1,9 @@
 var Auction = Auction || {};
 
+// хранит массивы из объектов, созданных через new
 Auction.instances = Auction.instances || {};
 
+// хранит функции-конутрукторы
 Auction.classes = Auction.classes || {};
 
 Auction.classes.Pdp = function(element) {
@@ -11,6 +13,7 @@ Auction.classes.Pdp = function(element) {
     $window: $(window)
   };
 
+  //будет хранить данные полученные с сервера; присваиваем значение, когда сработает событие getLots
   this.data = null;
 
   this.init();
@@ -20,7 +23,7 @@ Auction.classes.Pdp = function(element) {
 Auction.classes.Pdp.prototype.init = function() { // первичная настройка объекта и вызов вспомагательных методов
 };
 
-Auction.classes.Pdp.prototype.attachEvents = function() {
+Auction.classes.Pdp.prototype.attachEvents = function() { //подписываемся на события
 
   this.elements.$window.on('getLots', this.handleGetLots.bind(this));
 
@@ -35,12 +38,13 @@ Auction.classes.Pdp.prototype.handleGetLots = function(event, data) {
     return this.render(data, true);
   }
 
+  //сохраняем data
   this.data = data;
 
   this.findData();
 };
 
-Auction.classes.Pdp.prototype.findData = function() {
+Auction.classes.Pdp.prototype.findData = function() { //получить data конкретного лота
 
   var state = $.bbq.getState();
 
@@ -57,26 +61,35 @@ Auction.classes.Pdp.prototype.findData = function() {
   }
 };
 
-Auction.classes.Pdp.prototype.makeBid = function(event) {
+Auction.classes.Pdp.prototype.makeBid = function(event) { //Изменяет значение в поле bid-value
   event.preventDefault();
 
+  //заменяем тект элемента на переданный в text, т.е. цену заменяем на ту, что получили из input
   this.elements.$root.find('.bid-details__console__current-bid-value').text(event.target.elements.bid.value);
 };
 
 Auction.classes.Pdp.prototype.render = function(data, isError) { //отрисовывает html
 
-  var template = isError ? Auction.templates.error(data) : Auction.templates.pdp(data);
+  var template;
 
-  this.elements.$root.html(template);
+  if (isError) {
+    template = Auction.templates.error(data);
+    this.elements.$root.html(template);
 
+  } else {
+    template = Auction.templates.pdp(data);
+    this.elements.$root.html(template);
+    this.elements.$anchor = this.elements.$root.find('.pdp__title');
+    this.elements.$window.scrollTop(this.elements.$anchor.offset().top);
+  }
 };
 
-(function() { // функция обертка для скрытия переменных, использующихся для создания объектов
+(function() {
   var elements = document.getElementsByClassName('pdp'); //получаем массив элементов с классом promo
   Auction.instances.pdps = [];
 
-  for(var i = 0; i < elements.length; i++) { // перебираем массив elements
-    Auction.instances.pdps.push(new Auction.classes.Pdp(elements[i])); // для каждого элемента массива создаем объекты через конструктор Pdp и пушим их в массив promos. В данной ситуации такой объект один - это блок promo c каруселью.
+  for(var i = 0; i < elements.length; i++) {
+    Auction.instances.pdps.push(new Auction.classes.Pdp(elements[i])); // для каждого элемента массива создаем объекты через конструктор
   }
 })();
 
