@@ -9,3 +9,13 @@
   color: $dark-grey-color;
   font-size: 16px;
 }
+
+@include susy-breakpoint(0 $bp-tablet) {
+
+}
+
+@include susy-breakpoint(0 $bp-phone) {
+  .filters__select {
+    margin: 3px 0;
+  }
+}

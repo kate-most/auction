@@ -27,3 +27,20 @@
   padding: 0 15px;
 }
 
+@include susy-breakpoint(0 $bp-tablet) {
+  .pdp__info-item {
+    @include span(15 of 15);
+    float: none;
+  }
+
+  .pdp__image, .pdp__description{
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .pdp__description {
+    padding: 20px 0;
+  }
+}
+
+

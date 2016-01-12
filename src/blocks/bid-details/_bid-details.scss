@@ -6,11 +6,23 @@
   padding: 20px;
 }
 
-.bbid-details__console__current-bid {
+.bid-details__console__current-bid {
   margin-bottom: 2px;
 }
 
-.id-details__console__current-bid-amount {
+.bid-details__console__current-bid-amount {
   font-size: 20px;
   font-weight: bold;
+}
+
+.bid-details__bet-input {
+  padding: 5px 10px;
+  outline: none;
+}
+
+@include susy-breakpoint(0 $bp-tablet) {
+  .bid-details {
+    max-width: 600px;
+    margin: 0 auto;
+  }
 }

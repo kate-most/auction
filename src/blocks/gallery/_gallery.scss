@@ -3,21 +3,22 @@
   margin-top: 20px;
 }
 
-.gallery__item {
-  $layout: (
-    columns: 15,
-    gutters: 0,
-    math: fluid,
-    output: float,
-    gutter-position: inside,
-  );
+$gallery-layout: (
+  columns: 15,
+  gutters: 0,
+  math: fluid,
+  output: float,
+  gutter-position: inside,
+);
 
-  @include with-layout($layout) {
+.gallery__item {
+
+  @include with-layout($gallery-layout) {
     @include span(3 of 15);
   }
 
   &:nth-of-type(5n + 6) {
-    clear: left;
+    @include break;
   }
 }
 
@@ -25,4 +26,26 @@
   display: block;
   max-width: none;
   width: 100%;
+}
+
+@include susy-breakpoint($bp-phone + 1 $bp-tablet) {
+  .gallery__item {
+    @include with-layout($gallery-layout) {
+      @include span(5 of 15);
+
+      &:nth-of-type(5n + 6) {
+        clear: none;
+      }
+
+      &:nth-of-type(3n + 4) {
+        @include break;
+      }
+    }
+  }
+}
+
+@include susy-breakpoint(0 $bp-phone) {
+  .gallery__item {
+    @include span(15 of 15);
+  }
 }

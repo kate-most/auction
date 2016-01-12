@@ -2,10 +2,6 @@
 
   .lot-list & {
     @include span(3 of 15);
-
-    &:nth-of-type(6n + 6) {
-      clear: left;
-    }
   }
 
   &:hover .lot__title-link {
@@ -53,3 +49,18 @@
   left: 10px;
 }
 
+@include susy-breakpoint($bp-phone + 1 $bp-tablet) {
+  .lot {
+    .lot-list & {
+      @include span(5 of 15);
+    }
+  }
+}
+
+@include susy-breakpoint(0 $bp-phone) {
+  .lot {
+    .lot-list & {
+      @include span(15 of 15);
+    }
+  }
+}

@@ -67,3 +67,18 @@
   line-height: 2em;
   padding: 0 1.5em;
 }
+
+@include susy-breakpoint(0 $bp-tablet) {
+
+}
+
+@include susy-breakpoint(0 $bp-phone) {
+  .nav__list-item {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .nav__list-item-link {
+    border: none;
+  }
+}

@@ -18,3 +18,13 @@
   max-width: 100px;
   height: auto;
 }
+
+@include susy-breakpoint(0 $bp-tablet) {
+  .header__side.header__side_search {
+    display: none;
+  }
+}
+
+@include susy-breakpoint(0 $bp-phone) {
+
+}

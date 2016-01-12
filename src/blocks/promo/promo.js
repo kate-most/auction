@@ -30,7 +30,7 @@ Auction.classes.Promo.prototype.getLots = function() { // получаем json 
 
   // метод для ассинхронного http запроса
   $.ajax({
-    url: '/auction/services/lots.jsonp',
+    url: '/auction/services/lots.json',
     dataType: 'json',
     data: {},
     method: 'GET',

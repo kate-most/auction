@@ -38,7 +38,7 @@ Auction.classes.Contact.prototype.getContact = function() {
 
     //если есть, получаем данные с сервера
     $.ajax({
-      url: '/auction/services/contact.jsonp',
+      url: '/auction/services/contact.json',
       dataType: 'json',
       data: {},
       method: 'GET',
